@@ -1,0 +1,38 @@
+version: '2'
+services:
+  apiproxy:
+    build: .
+    image: valentinvieriu/booksclub:api-proxy-1.0.3
+    restart: always
+    environment: 
+      PORT: ${PORT}
+      POSTGREST: ${POSTGREST}
+      IS_WORKER: 'false'
+      USE_CLUSTER: 'true'
+      SELF: ''
+      API_KEY: ${API_KEY}
+    # ports:
+    #   - ${PORT}:${PORT}
+  #   labels:
+  #     - "traefik.frontend.rule=Host:apiproxy.${TLD}"
+  #     - "traefik.port=${PORT}"
+  # apischedule:
+  #   container_name: apischedule
+  #   build: .
+  #   restart: always
+  #   environment: 
+  #     # PORT: ${PORT}
+  #     POSTGREST: ${POSTGREST}
+  #     REDIS_URL: ${REDIS_URL}
+  #     IS_WORKER: ""
+  #     SELF: ""
+  #   # ports:
+  #   #   - ${PORT}:${PORT}
+  #   command: [ "node","--harmony-async-await","--optimize_for_size", "--max_old_space_size=460", "--gc_interval=100", "schedule.js" ]
+  #   # labels:
+  #     # - "traefik.frontend.rule=Host:apischedule.${TLD}"
+  #     # - "traefik.port=${PORT}"
+networks:
+  default:
+    external:
+      name: ${NETWORK_NAME}
