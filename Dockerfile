@@ -1,4 +1,4 @@
-FROM node:9.8.0-alpine as build
+FROM node:12-alpine as build
 # set our node environment, either development or production
 # defaults to production, compose overrides this to development on build and run
 ARG NODE_ENV=production
@@ -25,7 +25,7 @@ RUN apk add --no-cache libxml2 libgcc curl zlib-dev && \
     apk del .build-deps && \
     rm -rf /tmp/* /var/cache/apk/*
 
-FROM node:9.8.0-alpine
+FROM node:12-alpine
 # copy in our source code last, as it changes the most
 WORKDIR /usr/src/app
 ENV PATH /usr/src/node_modules/.bin:$PATH

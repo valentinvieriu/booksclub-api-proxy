@@ -1,18 +1,17 @@
 {
-  "name": "bookAPI",
+  "name": "bookapi",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node app.js"
   },
   "dependencies": {
-    "koa": "2.3.0",
+    "koa": "2.11.0",
     "kue": "0.11.6",
-    "libxml-to-js": "0.3.11",
-    "lodash": "4.17.4"
+    "libxml-to-js": "0.3.12",
+    "lodash": "4.17.15"
   },
   "engines": {
-    "node": "8.1.4",
-    "npm": "5.0.3"
+    "node": ">=8"
   }
 }
